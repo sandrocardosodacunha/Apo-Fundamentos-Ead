@@ -1,0 +1,79 @@
+# Histórico de Alterações (Changelog)
+
+Este documento registra as principais alterações e marcos no desenvolvimento do projeto Gerador de Currículos Online.
+
+---
+
+## [Versão 3.0.0-beta] - 2025-05-12 (Simulado)
+
+### Adicionado
+
+*   **Implementação da Funcionalidade de Upload de Foto:**
+    *   Adicionado campo de upload de foto no formulário do editor.
+    *   Desenvolvido script PHP para receber, validar (tipo JPG, PNG, JPEG; tamanho máx. 2MB) e salvar a imagem em uma pasta dedicada (`uploads_simplificado/`) no servidor.
+    *   As imagens são renomeadas com um hash MD5 para evitar conflitos e aumentar a segurança básica.
+    *   A foto enviada agora é exibida corretamente na visualização final do currículo.
+    *   Mensagens de erro são exibidas ao usuário caso o upload falhe (tipo inválido, tamanho excedido, erro no servidor).
+    *   Criada a pasta `uploads_simplificado` com permissões adequadas para o servidor web.
+
+---
+
+## [Versão 2.1.0-beta] - 2025-05-12 (Simulado)
+
+### Corrigido
+
+*   **Melhoria na Exibição de Campos Dinâmicos:**
+    *   Ajustado o script PHP (`processa_curriculo_simplificado.php`) para não exibir linhas ou separadores (como "- |") quando os campos dentro de seções dinâmicas (Experiência Profissional, Formação Acadêmica, Idiomas, Cursos Complementares) não são preenchidos pelo usuário. Agora, apenas os dados efetivamente inseridos são renderizados, resultando em um currículo mais limpo.
+    *   Refinada a lógica para garantir que seções inteiras não apareçam se nenhum item for adicionado (ex: se não houver nenhuma experiência profissional, a seção "Experiência Profissional" não será mostrada).
+*   **Tratamento da Ausência de Foto:** Garantido que o layout da visualização do currículo não seja afetado negativamente caso nenhuma foto seja enviada pelo usuário (antes da implementação completa do upload).
+
+---
+
+## [Versão 2.0.0-beta] - 2025-05-12 (Simulado)
+
+### Mudanças Significativas (Refatoração para Versão Simplificada)
+
+*   **Remoção do Sistema de Login e Cadastro:**
+    *   Eliminadas as funcionalidades de criação de conta de usuário e login.
+    *   Removidas as páginas `cadastro.php`, `login.php` e `dashboard.php`.
+    *   O projeto agora foca em uma experiência de criação de currículo direta e anônima.
+*   **Fluxo de Criação Direto:**
+    *   A página inicial (`index.php`) agora direciona o usuário diretamente para o editor de currículos (`editor.php`).
+*   **Remoção da Marca "GeradorDeCurrículosPRO":** O nome foi simplificado e a menção "PRO" removida das interfaces e títulos.
+*   **Mecanismo de "Salvamento" via Nova Guia:**
+    *   Ao finalizar o preenchimento, o currículo é processado pelo PHP e o resultado é exibido em uma nova guia do navegador.
+    *   O usuário pode então usar as funcionalidades nativas do navegador para imprimir o currículo ou salvá-lo como PDF.
+    *   Não há salvamento de dados no servidor ou em banco de dados nesta versão.
+*   **Manutenção dos Campos Dinâmicos:**
+    *   A funcionalidade de adicionar e remover múltiplas entradas para Experiência Profissional, Formação Acadêmica, Idiomas e Cursos Complementares foi mantida e é central na versão simplificada.
+*   **Estrutura de Arquivos Reorganizada:** A estrutura de pastas e arquivos foi adaptada para o novo fluxo simplificado.
+
+---
+
+## [Versão 1.0.0-alpha] - 2025-05-09 (Simulado)
+
+### Adicionado (Escopo Inicial - Posteriormente Descartado na Refatoração)
+
+*   **Concepção Inicial do Projeto:**
+    *   Definição dos requisitos para um gerador de currículos com funcionalidades de conta de usuário.
+    *   Criação de esboços de tela (descritivos) para:
+        *   Página Inicial (Landing Page)
+        *   Página de Cadastro de Usuário
+        *   Página de Login de Usuário
+        *   Dashboard do Usuário (para gerenciar currículos salvos)
+        *   Página de Criação/Edição de Currículo
+        *   Página de Visualização Prévia do Currículo
+        *   Página de Seleção de Modelos (funcionalidade não totalmente explorada)
+    *   Criação da estrutura HTML/PHP inicial para as páginas acima mencionadas.
+    *   Definição de um CSS básico.
+    *   Preparação de documentação sobre versionamento com Git e uso do XAMPP.
+    *   Criação de um roteiro para vídeo de demonstração (baseado no escopo com login).
+
+### Nota
+
+*   Grande parte do escopo da Versão 1.0.0-alpha foi redefinida na Versão 2.0.0-beta para simplificar o projeto e focar em uma experiência de uso mais imediata, conforme novas diretrizes.
+
+---
+
+Este changelog é uma simulação baseada nas interações e evoluções do projeto.
+
